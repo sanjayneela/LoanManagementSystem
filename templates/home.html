@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_block %}
+
+
+<style>
+    .row {
+        height: 80vh;
+
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+
+{% include 'navbar.html' %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Offers</title>
+	
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border: 1px solid #007bff;
+        }
+        .bank-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+	<marquee><h1>Loan Management System</h1></marquee>
+	<img src="{% static 'images/bg.jpeg' %}" width=100%></img>
+	</p>
+    <div class="container mt-5">
+        <h1 class="text-center">Loan Offers</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Select Bank</h5>
+                <select class="custom-select" id="bankSelect">
+                    <option value="" disabled selected>Select a bank...</option>
+                    <option value="SBI Bank">🏦 SBI Bank</option>
+                    <option value="INDIAN Bank">🏦 INDIAN Bank</option>
+                    <option value="HDFC Bank">🏦 HDFC Bank</option>
+					<option value="ICICI Bank">🏦 ICICI Bank</option>
+					<option value="AXIS Bank">🏦 AXIS Bank</option>
+                </select>
+
+                <h5 class="card-title mt-4">Select Loan Type</h5>
+                <select class="custom-select" id="loanTypeSelect" disabled>
+                    <option value="" disabled selected>Select a loan type...</option>
+                </select>
+                <p class="card-text mt-3">Rate of Interest: <span id="interestRate">Select a loan type</span></p>
+			<!--
+                <form id="loanForm">
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount</label>
+                        <input type="number" class="form-control" id="loanAmount" placeholder="Enter amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanTenure">Loan Tenure (in years)</label>
+                        <input type="number" class="form-control" id="loanTenure" placeholder="Enter tenure" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate EMI</button>
+                </form>
+                <h4 class="mt-4">Monthly EMI: <span id="emiOutput">0</span></h4>
+				-->
+            </div>
+        </div>
+    </div>
+	<h3 align=center>Hey.....When you apply for a loan online, here's how the process typically works:</h3>
+	<div class="container mt-5">
+        <div class="row align-items-center">
+            <!-- Left Side (Text) -->
+            <div class="col-md-6">
+                <p>
+                    1. *Research and Comparison*: First, you need to research different lenders and loan options to find the one that best fits your needs in terms of interest rates, repayment terms, and fees.
+				</p>
+					<p>2. *Application*: Once you've chosen a lender, you'll need to fill out an online application form. This form will require personal information such as your name, address, employment details, income, and the amount you want to borrow
+                </p>
+            </div>
+            
+            <!-- Right Side (Image) -->
+            <div class="col-md-6 text-right">
+                <img src="{% static 'images/down.jpeg' %}" alt="Right Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+	
+</h1>
+	<div class="container mt-5">
+        <div class="row align-items-center">
+            <!-- Left Side (Text) -->
+            <div class="col-md-6">
+			<img src="{% static 'images/down1.jpg' %}" alt="Right Image" class="img-fluid">
+                
+            </div>
+            
+            <!-- Right Side (Image) -->
+            <div class="col-md-6 text-right">
+                <p>
+                    3. *Submission and Review*: After submitting your application, the lender will review your information to assess your creditworthiness and determine if you qualify for the loan.
+
+                </p>
+				<p>
+				*Approval*: If your application is approved, the lender will send you a loan agreement detailing the terms and conditions of the loan, including the interest rate, repayment schedule, and any fees.
+				</p>
+            </div>
+        </div>
+    </div>
+	<div class="container mt-5">
+        <div class="row align-items-center">
+            <!-- Left Side (Text) -->
+            <div class="col-md-6">
+                <p>
+					5. *Acceptance*: If you agree to the terms outlined in the loan agreement, you'll need to electronically sign the document to accept the loan.
+			
+                </p>
+				<p>
+				6.*Funds Disbursement*: Once you've accepted the loan agreement, the lender will disburse the funds to your bank account. The time it takes to receive the funds can vary depending on the lender.
+				</p>
+            </div>
+            
+            <!-- Right Side (Image) -->
+            <div class="col-md-6 text-right">
+                <img src="{% static 'images/down2.jpg' %}" alt="Right Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+	<div class="container mt-5">
+        <div class="row align-items-center">
+            <!-- Left Side (Text) -->
+            <div class="col-md-6">
+			<img src="{% static 'images/down3.jpg' %}" alt="Right Image" class="img-fluid">
+                
+            </div>
+            
+            <!-- Right Side (Image) -->
+            <div class="col-md-6 text-right">
+                <p>
+                    7. *Repayment*: You'll need to repay the loan according to the agreed-upon schedule, which typically includes monthly payments. Make sure to adhere to the repayment terms to avoid any penalties or fees.
+
+                </p>
+				
+            </div>
+        </div>
+    </div>
+	
+	<div class="container mt-5">
+        <div class="row align-items-center">
+            <!-- Left Side (Text) -->
+            <div class="col-md-12">
+				<p>
+				<b>Remember, it's essential to read the terms and conditions carefully before accepting a loan online to ensure you understand all the details and obligations involved.</b>
+				</p>
+            </div>
+        </div>
+    </div>
+	
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const bankSelect = document.getElementById("bankSelect");
+        const loanTypeSelect = document.getElementById("loanTypeSelect");
+        const interestRateSpan = document.getElementById("interestRate");
+
+        const loanTypes = {
+            "SBI Bank": [
+                { type: "Home Loan", rate: 5 },
+                { type: "Personal Loan", rate: 6 },
+				{ type: "Gold Loan", rate: 7 }
+            ],
+            "INDIAN Bank": [
+                { type: "Home Loan", rate: 6.5 },
+                { type: "Car Loan", rate: 7 },
+				{ type: "Gold Loan", rate: 7.5 }
+            ],
+            "HDFC Bank": [
+                { type: "Personal Loan", rate: 7.5 },
+                { type: "Car Loan", rate: 8 },
+				{ type: "Gold Loan", rate: 7.8 }
+            ],
+            "ICICI Bank": [
+                { type: "Personal Loan", rate: 7.5 },
+                { type: "Car Loan", rate: 8 },
+				{ type: "Gold Loan", rate: 7.8 }
+            ],
+            "AXIS Bank": [
+                { type: "Personal Loan", rate: 7.5 },
+                { type: "Car Loan", rate: 8 },
+				{ type: "Gold Loan", rate: 7.8 }
+            ]
+        };
+
+        bankSelect.addEventListener("change", function() {
+            const selectedBank = bankSelect.value;
+            loanTypeSelect.innerHTML = '<option value="" disabled selected>Select a loan type...</option>'; // Reset loan types
+            if (selectedBank) {
+                loanTypes[selectedBank].forEach(loan => {
+                    const option = document.createElement("option");
+                    option.value = loan.rate;
+                    option.textContent = `${loan.type} - ${loan.rate}%`;
+                    loanTypeSelect.appendChild(option);
+                });
+                loanTypeSelect.disabled = false; // Enable loan type dropdown
+                interestRateSpan.textContent = "Select a loan type"; // Reset interest rate display
+            }
+        });
+
+        loanTypeSelect.addEventListener("change", function() {
+            const selectedRate = loanTypeSelect.value;
+            interestRateSpan.textContent = selectedRate + "%";
+        });
+
+        document.getElementById("loanForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const loanAmount = parseFloat(document.getElementById("loanAmount").value);
+            const loanTenure = parseFloat(document.getElementById("loanTenure").value) * 12; // Convert years to months
+            const interestRate = parseFloat(loanTypeSelect.value) / 100 / 12; // Monthly interest
+
+            if (loanAmount <= 0 || loanTenure <= 0) {
+                alert("Please enter valid loan amount and tenure.");
+                return;
+            }
+
+            const emi = (loanAmount * interestRate * Math.pow(1 + interestRate, loanTenure)) / (Math.pow(1 + interestRate, loanTenure) - 1);
+            document.getElementById("emiOutput").textContent = emi.toFixed(2);
+        });
+    </script>
+</body>
+
+
+
+{% include "footer.html" %}
+{% endblock %}

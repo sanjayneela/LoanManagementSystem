@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Admin Dashboard</title>
+    {% block css_block %}
+    <style>
+        /* Styling for a modern look */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .nav_logo {
+            font-weight: 600;
+            color: #ffffff; /* Light color for better visibility */
+            font-size: 1.2rem;
+        }
+        .nav_link, .nav_logo-name {
+            color: #ffffff; /* Ensure text is visible against the dark background */
+            text-decoration: none; /* Remove underline */
+            padding: 10px 20px; /* Increase padding for better click area */
+            display: flex; /* Use flexbox to align icon and text */
+            align-items: center; /* Center icon and text vertically */
+        }
+        .nav_link:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: white;
+            border-radius: 5px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+        .l-navbar {
+            background-color: #343a40; /* Dark background for the navbar */
+            color: white; /* White text color */
+            width: 250px; /* Set a fixed width for the navbar */
+            height: 100vh; /* Full height of viewport */
+            overflow: auto; /* Allow scrolling if needed */
+        }
+        .nav_icon {
+            font-size: 1.2rem;
+            margin-right: 10px; /* Add some space between icon and text */
+        }
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .l-navbar {
+                width: 200px; /* Adjust width for smaller screens */
+            }
+            .nav {
+                flex-direction: column;
+            }
+            .nav_logo, .nav_link {
+                text-align: center;
+                font-size: 1rem;
+            }
+        }
+    </style>
+    {% endblock %}
+</head>
+
+<body>
+    <div id="body-pd">
+        <header class="header" id="header">
+            <h3 class="text-white" style="font-size: 1.5rem;font-weight: 600;margin: 0; margin-left: auto;">Loan Management System</h3>
+        </header>
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div> 
+                    <a href="#" class="nav_logo"> 
+                        <i class='fas fa-layer-group nav_icon'></i> 
+                        <span class="nav_logo-name">Dashboard</span> 
+                    </a>
+                    <div class="nav_list">
+                        <a href="/manager/dashboard" class="nav_link"> 
+                            <i class='fas fa-th-large nav_icon'></i> 
+                            Dashboard 
+                        </a>
+                        <a href="/manager/users" class="nav_link"> 
+                            <i class='fas fa-users nav_icon'></i> 
+                            Users 
+                        </a>
+                        <a href="/manager/transaction-loan" class="nav_link"> 
+                            <i class='fas fa-chart-bar nav_icon'></i> 
+                            Transactions 
+                        </a>
+                        <a href="/manager/approved-loan" class="nav_link"> 
+                            <i class="fas fa-check-circle nav_icon"></i> 
+                            Approved Loan 
+                        </a>
+                        <a href="/manager/loan-request-user" class="nav_link"> 
+                            <i class="fas fa-file-signature nav_icon"></i> 
+                            Request Loan 
+                        </a>
+                        <a href="/manager/rejected-loan" class="nav_link"> 
+                            <i class="fas fa-times-circle nav_icon"></i> 
+                            Rejected Loan 
+                        </a>
+                        <a href="/manager/add-category" class="nav_link"> 
+                            <i class="fas fa-list-alt nav_icon"></i> 
+                            Add Category 
+                        </a>
+                    </div>
+                </div>
+                <a href="/account/logout-customer" class="nav_link"> 
+                    <i class='fas fa-sign-out-alt nav_icon'></i> 
+                    Sign Out 
+                </a>
+            </nav>
+        </div>
+        <div class="container-fluid">
+            {% block body_block %}{% endblock %}
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

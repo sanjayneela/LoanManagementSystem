@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+{% block css_block %}
+<style>
+    .dashboard-container {
+        padding: 2rem;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .status-card {
+        border-radius: 10px;
+        color: white;
+        margin: 15px 0; /* Margin changed for vertical spacing */
+        padding: 2rem;
+        transition: transform 0.2s;
+    }
+
+    .status-card:hover {
+        transform: scale(1.05);
+    }
+
+    .status-card h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .status-card h3 {
+        margin-bottom: 1rem;
+    }
+
+    .digit {
+        font-size: 2.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+{% include 'navbar.html' %}
+<div class="container my-5 dashboard-container">
+    <div class="text-center alert alert-primary" role="alert">
+        <h1>User Dashboard</h1>
+    </div>
+    <div>
+        <div class="status-card" style="background-color:#4ea4f0;">
+            <h3>Loan Request</h3>
+            <h1 class="digit">{{ request }}</h1>
+        </div>
+        <div class="status-card" style="background-color:#a64cf0;">
+            <h3>Loan Approved</h3>
+            <h1 class="digit">{{ approved }}</h1>
+        </div>
+        <div class="status-card" style="background-color:#4c4ff0;">
+            <h3>Loan Rejected</h3>
+            <h1 class="digit">{{ rejected }}</h1>
+        </div>
+        <div class="status-card" style="background-color:#90ED7D;">
+            <h3>Payable Loan</h3>
+            <h1 class="digit">{{ totalPayable|default:0 }}</h1>
+        </div>
+        <div class="status-card" style="background-color:#FF7599;">
+            <h3>Approved Loan</h3>
+            <h1 class="digit">{{ totalLoan|default:0 }}</h1>
+        </div>
+        <div class="status-card" style="background-color:#EF5350;">
+            <h3>Total Paid Loan</h3>
+            <h1 class="digit">{{ totalPaid|default:0 }}</h1>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
+

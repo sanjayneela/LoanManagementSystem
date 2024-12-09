@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block block_js %}
+<script>
+    // Add any JavaScript functionality if needed
+</script>
+{% endblock %}
+
+{% block css_block %}
+<style>
+    body {
+        background-color: #f4f7fa; /* Light background for overall page */
+    }
+
+    .table-container {
+        overflow-x: auto; /* Enables horizontal scrolling for small screens */
+        margin-top: 2rem;
+        border: 1px solid #dee2e6; /* Light border around the table container */
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    h1 {
+        color: #007bff; /* Bright blue color for the heading */
+        text-shadow: 1px 1px 2px rgba(0, 123, 255, 0.3); /* Shadow effect for depth */
+    }
+
+    .table {
+        background-color: #ffffff; /* White background for the table */
+        border-radius: 10px; /* Rounded corners for the table */
+        overflow: hidden; /* Ensures border-radius is applied */
+        margin: 0; /* Removes default margin */
+    }
+
+    thead {
+        background-color: #343a40; /* Dark header background */
+        color: #ffffff; /* White text for the header */
+        border-bottom: 2px solid #007bff; /* Bright blue border for the header */
+    }
+
+    th, td {
+        vertical-align: middle; /* Center content vertically */
+        padding: 12px; /* More padding for better spacing */
+    }
+
+    .status-button {
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-info {
+        background-color: #007bff; /* Custom blue color for the button */
+        border: none;
+    }
+
+    .btn-info:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.5rem; /* Smaller heading size for mobile */
+        }
+
+        .table th, .table td {
+            font-size: 0.9rem; /* Smaller font size for mobile */
+        }
+
+        .table-container {
+            margin: 1rem 0; /* Smaller margins for mobile */
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+{% include 'navbar.html' %}
+<div class="container my-5">
+    <h1 class="text-center">Loan Request History</h1>
+    <div class="table-container">
+
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">SL</th>
+                    <th scope="col">Loan ID</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Request Amount</th>
+                    <th scope="col">Request Date</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for loan in loans %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ loan.id }}</td>
+                    <td>{{ loan.customer.id }}</td>
+                    <td>{{ loan.customer.user.username }}</td> <!-- Ensure correct username is shown -->
+                    <td>
+                        <button type="button" class="status-button px-3 text-white btn btn-info btn-sm">
+                            {{ loan.status }}
+                        </button>
+                    </td>
+                    <td>{{ loan.category }}</td>
+                    <td>{{ loan.amount }} Tk</td>
+                    <td>{{ loan.request_date }}</td>
+                    <td>{{ loan.year }}</td>
+                    <td>{{ loan.customer.user.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
